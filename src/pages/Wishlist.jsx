@@ -1,10 +1,9 @@
-
 const Wishlist = () => {
   return (
-    <div>
-      
-    </div>
-  )
-}
+    <section className="container py-20">
+      <h1 className="text-4xl font-bold">Home</h1>
+    </section>
+  );
+};
 
-export default Wishlist
+export default Wishlist;
