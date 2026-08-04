@@ -51,11 +51,11 @@ const ProductDetails = () => {
         {/* Product */}
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Image */}
-          <div className="bg-slate-50 rounded-2xl flex items-center justify-center p-10 min-h-[450px]">
+          <div className="bg-slate-50 rounded-2xl flex items-center justify-center p-10 min-h-112.5">
             <img
               src={product.image}
               alt={product.name}
-              className="w-full max-w-lg h-[400px] object-contain"
+              className="w-full max-w-lg h-100 object-contain"
             />
           </div>
 
