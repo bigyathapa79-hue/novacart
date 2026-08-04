@@ -24,7 +24,7 @@ const Navbar = () => {
       <div className="container flex items-center justify-between h-20">
         {/* Logo */}
         <Link to="/">
-          <img src="/logo.png" alt="NovaCart" className="h-20" />
+          <img src="/logo.png" alt="NovaCart" className="h-30" />
         </Link>
 
         {/* Desktop Navigation */}

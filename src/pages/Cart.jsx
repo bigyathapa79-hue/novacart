@@ -4,6 +4,7 @@ import { FaArrowLeft, FaShoppingCart } from "react-icons/fa";
 import { useCart } from "../context/CartContext";
 import CartItem from "../components/cart/CartItem";
 import CartSummary from "../components/cart/CartSummary";
+import SEO from "../components/SEO";
 
 const Cart = () => {
   const { cart } = useCart();
@@ -34,41 +35,48 @@ const Cart = () => {
   }
 
   return (
-    <section className="py-16">
-      <div className="container">
-        {/* Header */}
+    <>
+      <SEO
+        title="Shopping Cart"
+        description="Review the products in your NovaCart shopping cart."
+        noIndex
+      />
+      <section className="py-16">
+        <div className="container">
+          {/* Header */}
 
-        <div className="mb-10">
-          <p className="text-blue-600 font-semibold uppercase tracking-widest">
-            Shopping Cart
-          </p>
+          <div className="mb-10">
+            <p className="text-blue-600 font-semibold uppercase tracking-widest">
+              Shopping Cart
+            </p>
 
-          <h1 className="text-4xl font-bold mt-2">Your Cart</h1>
+            <h1 className="text-4xl font-bold mt-2">Your Cart</h1>
 
-          <p className="text-slate-500 mt-2">
-            Review your items before checkout.
-          </p>
-        </div>
-
-        {/* Cart */}
-
-        <div className="grid lg:grid-cols-[1fr_380px] gap-10">
-          {/* Items */}
-
-          <div className="bg-white border border-slate-200 rounded-2xl px-6">
-            {cart.map((item) => (
-              <CartItem key={item.id} item={item} />
-            ))}
+            <p className="text-slate-500 mt-2">
+              Review your items before checkout.
+            </p>
           </div>
 
-          {/* Summary */}
+          {/* Cart */}
 
-          <div>
-            <CartSummary />
+          <div className="grid lg:grid-cols-[1fr_380px] gap-10">
+            {/* Items */}
+
+            <div className="bg-white border border-slate-200 rounded-2xl px-6">
+              {cart.map((item) => (
+                <CartItem key={item.id} item={item} />
+              ))}
+            </div>
+
+            {/* Summary */}
+
+            <div>
+              <CartSummary />
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 };
 

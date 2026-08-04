@@ -5,6 +5,7 @@ import ShopFilters from "../components/shop/ShopFilters";
 import ShopProducts from "../components/shop/ShopProducts.";
 import { products } from "../data/product";
 import ShopHeader from "../components/shop/ShopHeader";
+import SEO from "../components/SEO";
 
 const Shop = () => {
   const [searchParams] = useSearchParams();
@@ -45,6 +46,14 @@ const Shop = () => {
 
   return (
     <>
+      <SEO
+        title="Shop"
+        description="Browse premium electronics, fashion, furniture, gadgets and lifestyle products at NovaCart."
+      />
+      <SEO
+        title="Shop"
+        description="Browse premium electronics, fashion, furniture, gadgets and lifestyle products at NovaCart."
+      />
       <ShopHeader />
 
       <section className="py-16">

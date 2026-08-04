@@ -6,6 +6,7 @@ import {
   FaStar,
   FaTruck,
 } from "react-icons/fa";
+import SEO from "../components/SEO";
 
 const About = () => {
   const features = [
@@ -31,6 +32,10 @@ const About = () => {
 
   return (
     <>
+      <SEO
+        title="About Us"
+        description="Learn more about NovaCart, your trusted destination for quality products, affordable prices and convenient online shopping."
+      />
       {/* Hero */}
 
       <section className="bg-slate-50 border-b">

@@ -1,5 +1,6 @@
 import { useForm } from "react-hook-form";
 import { FaEnvelope, FaMapMarkerAlt, FaPhoneAlt } from "react-icons/fa";
+import SEO from "../components/SEO";
 
 const Contact = () => {
   const {
@@ -22,6 +23,10 @@ const Contact = () => {
 
   return (
     <>
+      <SEO
+        title="Contact Us"
+        description="Contact the NovaCart team for questions about products, orders, shipping and customer support."
+      />
       {/* Header */}
 
       <section className="bg-slate-50 border-b">
