@@ -4,7 +4,7 @@ import { HelmetProvider } from "react-helmet-async";
 import App from "./App";
 import "./index.css";
 
-import { WishlistProvider } from "./context/WishlistContext";
+import { WishlistProvider } from "./context/WishListContext";
 import { CartProvider } from "./context/CartContext";
 
 
