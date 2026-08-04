@@ -1,3 +1,4 @@
+
 import { createContext, useContext, useEffect, useState } from "react";
 
 const WishlistContext = createContext();
@@ -10,12 +11,17 @@ export const WishlistProvider = ({ children }) => {
   });
 
   useEffect(() => {
-    localStorage.setItem("novacart-wishlist", JSON.stringify(wishlist));
+    localStorage.setItem(
+      "novacart-wishlist",
+      JSON.stringify(wishlist)
+    );
   }, [wishlist]);
 
   const addToWishlist = (product) => {
     setWishlist((currentWishlist) => {
-      const exists = currentWishlist.some((item) => item.id === product.id);
+      const exists = currentWishlist.some(
+        (item) => item.id === product.id
+      );
 
       if (exists) {
         return currentWishlist;
@@ -27,7 +33,7 @@ export const WishlistProvider = ({ children }) => {
 
   const removeFromWishlist = (productId) => {
     setWishlist((currentWishlist) =>
-      currentWishlist.filter((item) => item.id !== productId),
+      currentWishlist.filter((item) => item.id !== productId)
     );
   };
 
@@ -55,3 +61,4 @@ export const WishlistProvider = ({ children }) => {
 export const useWishlist = () => {
   return useContext(WishlistContext);
 };
+;
