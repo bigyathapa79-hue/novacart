@@ -1,11 +1,11 @@
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 
+import SEO from "../components/SEO";
 import ShopFilters from "../components/shop/ShopFilters";
+import ShopHeader from "../components/shop/ShopHeader";
 import ShopProducts from "../components/shop/ShopProducts.";
 import { products } from "../data/product";
-import ShopHeader from "../components/shop/ShopHeader";
-import SEO from "../components/SEO";
 
 const Shop = () => {
   const [searchParams] = useSearchParams();
@@ -16,9 +16,7 @@ const Shop = () => {
 
   const [sort, setSort] = useState("default");
 
-  useEffect(() => {
-    setCategory(urlCategory || "All");
-  }, [urlCategory]);
+  
 
   const filteredProducts = useMemo(() => {
     let result =

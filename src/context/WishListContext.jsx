@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 
 const WishlistContext = createContext();
 
@@ -52,6 +52,4 @@ export const WishlistProvider = ({ children }) => {
   );
 };
 
-export const useWishlist = () => {
-  return useContext(WishlistContext);
-};
+
