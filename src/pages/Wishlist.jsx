@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { FaHeart, FaShoppingBag } from "react-icons/fa";
 
-import { useWishlist } from "../context/WishlistContext";
+import { useWishlist } from "../context/WishListContext";
 import { useCart } from "../context/CartContext";
 
 const Wishlist = () => {

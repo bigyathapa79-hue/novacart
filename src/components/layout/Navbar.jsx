@@ -3,7 +3,7 @@ import { FaBars, FaHeart, FaShoppingCart, FaTimes } from "react-icons/fa";
 import { Link, NavLink } from "react-router-dom";
 
 import { useCart } from "../../context/CartContext";
-import { useWishlist } from "../../context/WishlistContext";
+import { useWishlist } from "../../context/WishListContext";
 import MobileMenu from "./MobileMenu";
 import SearchBar from "./SearchBar";
 

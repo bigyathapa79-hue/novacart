@@ -2,7 +2,7 @@ import { useState } from "react";
 import { FaHeart, FaMinus, FaPlus, FaStar } from "react-icons/fa";
 import Button from "../ui/Button";
 import { useCart } from "../../context/CartContext";
-import { useWishlist } from "../../context/WishlistContext";
+import { useWishlist } from "../../context/WishListContext";
 
 const ProductInfo = ({ product }) => {
   const [quantity, setQuantity] = useState(1);
