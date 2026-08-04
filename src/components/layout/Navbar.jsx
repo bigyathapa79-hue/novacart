@@ -4,9 +4,11 @@ import { FaBars, FaTimes, FaHeart, FaShoppingCart } from "react-icons/fa";
 
 import SearchBar from "./SearchBar";
 import MobileMenu from "./MobileMenu";
+import { useCart } from "../../context/CartContext";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
+  const { cartCount } = useCart();
 
   const navLinks = [
     { name: "Home", path: "/" },
@@ -54,7 +56,7 @@ const Navbar = () => {
           <Link to="/cart" className="relative text-xl hover:text-blue-600">
             <FaShoppingCart />
             <span className="absolute -top-2 -right-2 bg-blue-600 text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center">
-              0
+              {cartCount}
             </span>
           </Link>
 

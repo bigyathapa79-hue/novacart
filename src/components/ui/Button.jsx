@@ -6,13 +6,12 @@ const Button = ({
 }) => {
   const styles = {
     primary: "bg-blue-600 hover:bg-blue-700 text-white",
-
     secondary: "border border-slate-300 hover:bg-slate-100 text-slate-900",
   };
 
   return (
     <button
-      className={`px-6 py-3 rounded-lg font-medium transition duration-300 ${styles[variant]} ${className}`}
+      className={`inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg font-medium transition duration-300 ${styles[variant]} ${className}`}
       {...props}
     >
       {children}
