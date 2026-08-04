@@ -7,11 +7,30 @@ import { Link, useParams } from "react-router-dom";
 import { FaArrowLeft } from "react-icons/fa";
 import { products } from "../data/product";
 import ProductInfo from "../components/product/ProductInfo";
+import SEO from "../components/SEO";
 
 const ProductDetails = () => {
   const { slug } = useParams();
 
   const product = products.find((item) => item.slug === slug);
+  const productSchema = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: product.name,
+    image: [
+      product.image.startsWith("http")
+        ? product.image
+        : `${window.location.origin}${product.image}`,
+    ],
+    description: product.description || `Shop ${product.name} at NovaCart.`,
+    offers: {
+      "@type": "Offer",
+      priceCurrency: "USD",
+      price: product.price,
+      availability: "https://schema.org/InStock",
+      url: window.location.href,
+    },
+  };
 
   // Product doesn't exist
   if (!product) {
@@ -37,33 +56,41 @@ const ProductDetails = () => {
   }
 
   return (
-    <section className="py-16">
-      <div className="container">
-        {/* Back Link */}
-        <Link
-          to="/shop"
-          className="inline-flex items-center gap-2 text-slate-600 hover:text-blue-600 mb-10"
-        >
-          <FaArrowLeft />
-          Back to Shop
-        </Link>
+    <>
+      <SEO
+        title={product.name}
+        description={product.description || `Shop ${product.name} at NovaCart.`}
+        image={product.image}
+        structuredData={productSchema}
+      />
+      <section className="py-16">
+        <div className="container">
+          {/* Back Link */}
+          <Link
+            to="/shop"
+            className="inline-flex items-center gap-2 text-slate-600 hover:text-blue-600 mb-10"
+          >
+            <FaArrowLeft />
+            Back to Shop
+          </Link>
 
-        {/* Product */}
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Image */}
-          <div className="bg-slate-50 rounded-2xl flex items-center justify-center p-10 min-h-112.5">
-            <img
-              src={product.image}
-              alt={product.name}
-              className="w-full max-w-lg h-100 object-contain"
-            />
+          {/* Product */}
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {/* Image */}
+            <div className="bg-slate-50 rounded-2xl flex items-center justify-center p-10 min-h-112.5">
+              <img
+                src={product.image}
+                alt={product.name}
+                className="w-full max-w-lg h-100 object-contain"
+              />
+            </div>
+
+            {/* Info */}
+            <ProductInfo product={product} />
           </div>
-
-          {/* Info */}
-          <ProductInfo product={product} />
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 };
 

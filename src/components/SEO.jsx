@@ -1,11 +1,24 @@
 import { Helmet } from "react-helmet-async";
 
-const SEO = ({ title, description, image = "/cover.jpg", noIndex = false }) => {
+const SEO = ({
+  title,
+  description,
+  image = "/images/seo/cover.jpg",
+  noIndex = false,
+  structuredData,
+}) => {
   const siteName = "NovaCart";
 
   const fullTitle = title
     ? `${title} | ${siteName}`
     : `${siteName} | Shop Smart. Live Better.`;
+
+  const currentUrl = window.location.href;
+
+  // Convert relative image path to absolute URL
+  const absoluteImageUrl = image.startsWith("http")
+    ? image
+    : `${window.location.origin}${image}`;
 
   return (
     <Helmet>
@@ -16,14 +29,13 @@ const SEO = ({ title, description, image = "/cover.jpg", noIndex = false }) => {
       <meta name="description" content={description} />
 
       <meta
-        name="keywords"
-        content="NovaCart, online shopping, ecommerce, electronics, fashion, furniture, lifestyle products"
-      />
-
-      <meta
         name="robots"
         content={noIndex ? "noindex, nofollow" : "index, follow"}
       />
+
+      {/* Canonical */}
+
+      <link rel="canonical" href={currentUrl} />
 
       {/* Open Graph */}
 
@@ -35,9 +47,15 @@ const SEO = ({ title, description, image = "/cover.jpg", noIndex = false }) => {
 
       <meta property="og:site_name" content={siteName} />
 
-      <meta property="og:image" content={image} />
+      <meta property="og:url" content={currentUrl} />
 
-      {/* Twitter */}
+      <meta property="og:image" content={absoluteImageUrl} />
+
+      <meta property="og:image:width" content="1200" />
+
+      <meta property="og:image:height" content="630" />
+
+      {/* Twitter / X */}
 
       <meta name="twitter:card" content="summary_large_image" />
 
@@ -45,7 +63,15 @@ const SEO = ({ title, description, image = "/cover.jpg", noIndex = false }) => {
 
       <meta name="twitter:description" content={description} />
 
-      <meta name="twitter:image" content={image} />
+      <meta name="twitter:image" content={absoluteImageUrl} />
+
+      {/* Structured Data */}
+
+      {structuredData && (
+        <script type="application/ld+json">
+          {JSON.stringify(structuredData)}
+        </script>
+      )}
     </Helmet>
   );
 };
