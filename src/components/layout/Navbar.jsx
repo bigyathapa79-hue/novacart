@@ -1,14 +1,16 @@
 import { useState } from "react";
+import { FaBars, FaHeart, FaShoppingCart, FaTimes } from "react-icons/fa";
 import { Link, NavLink } from "react-router-dom";
-import { FaBars, FaTimes, FaHeart, FaShoppingCart } from "react-icons/fa";
 
-import SearchBar from "./SearchBar";
-import MobileMenu from "./MobileMenu";
 import { useCart } from "../../context/CartContext";
+import { useWishlist } from "../../context/WishlistContext";
+import MobileMenu from "./MobileMenu";
+import SearchBar from "./SearchBar";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
   const { cartCount } = useCart();
+  const { wishlistCount } = useWishlist();
 
   const navLinks = [
     { name: "Home", path: "/" },
@@ -46,11 +48,17 @@ const Navbar = () => {
         <div className="flex items-center gap-5">
           <SearchBar />
 
-          <Link to="/wishlist" className="relative text-xl hover:text-blue-600">
+          <Link
+            to="/wishlist"
+            className="relative text-slate-700 hover:text-blue-600 transition"
+          >
             <FaHeart />
-            <span className="absolute -top-2 -right-2 bg-blue-600 text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center">
-              0
-            </span>
+
+            {wishlistCount > 0 && (
+              <span className="absolute -top-2 -right-2 bg-red-500 text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center">
+                {wishlistCount}
+              </span>
+            )}
           </Link>
 
           <Link to="/cart" className="relative text-xl hover:text-blue-600">

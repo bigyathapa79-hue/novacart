@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { FaStar } from "react-icons/fa";
 import Button from "../../ui/Button";
 
@@ -24,9 +25,13 @@ const HeroContent = () => {
 
       {/* Buttons */}
       <div className="flex flex-wrap gap-4 mt-8">
-        <Button>Shop Now</Button>
+        <Link to="/shop">
+          <Button>Shop Now</Button>
+        </Link>
 
-        <Button variant="secondary">Explore Products</Button>
+        <Link to="/shop">
+          <Button variant="secondary">Explore Products</Button>
+        </Link>
       </div>
 
       {/* Rating */}

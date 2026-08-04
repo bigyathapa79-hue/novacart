@@ -2,10 +2,12 @@ import { useState } from "react";
 import { FaHeart, FaMinus, FaPlus, FaStar } from "react-icons/fa";
 import Button from "../ui/Button";
 import { useCart } from "../../context/CartContext";
+import { useWishlist } from "../../context/WishlistContext";
 
 const ProductInfo = ({ product }) => {
   const [quantity, setQuantity] = useState(1);
   const { addToCart } = useCart();
+  const { addToWishlist, removeFromWishlist, isInWishlist } = useWishlist();
 
   const increaseQuantity = () => {
     setQuantity((prev) => prev + 1);
@@ -73,7 +75,20 @@ const ProductInfo = ({ product }) => {
           Add to Cart
         </Button>
 
-        <button className="w-12 h-12 border border-slate-300 rounded-lg flex items-center justify-center text-xl hover:text-red-500 hover:border-red-300 transition">
+        <button
+          onClick={() => {
+            if (isInWishlist(product.id)) {
+              removeFromWishlist(product.id);
+            } else {
+              addToWishlist(product);
+            }
+          }}
+          className={`w-12 h-12 border rounded-lg flex items-center justify-center text-xl transition ${
+            isInWishlist(product.id)
+              ? "text-red-500 border-red-300"
+              : "text-slate-500 border-slate-300 hover:text-red-500 hover:border-red-300"
+          }`}
+        >
           <FaHeart />
         </button>
       </div>

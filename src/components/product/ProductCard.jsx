@@ -2,9 +2,10 @@ import { FaHeart, FaStar } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import Button from "../ui/Button";
 import { useCart } from "../../context/CartContext";
+import { useWishlist } from "../../context/WishlistContext";
 
 const ProductCard = ({ product }) => {
-  const { addToCart } = useCart();
+  const { addToCart } = useCart();const { addToWishlist, removeFromWishlist, isInWishlist } = useWishlist();
   return (
     <div className="group bg-white border border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-300">
       {/* Image */}
@@ -27,7 +28,20 @@ const ProductCard = ({ product }) => {
             <h3 className="font-semibold text-lg mt-1">{product.name}</h3>
           </div>
 
-          <button className="text-slate-400 hover:text-red-500">
+          <button
+            onClick={() => {
+              if (isInWishlist(product.id)) {
+                removeFromWishlist(product.id);
+              } else {
+                addToWishlist(product);
+              }
+            }}
+            className={`text-xl transition ${
+              isInWishlist(product.id)
+                ? "text-red-500"
+                : "text-slate-400 hover:text-red-500"
+            }`}
+          >
             <FaHeart />
           </button>
         </div>

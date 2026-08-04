@@ -8,6 +8,7 @@ import Wishlist from "../pages/Wishlist";
 import About from "../pages/About";
 import Contact from "../pages/Contact";
 import NotFound from "../pages/NotFound";
+import Checkout from "../pages/Checkout";
 
 export const router = createBrowserRouter([
   {
@@ -42,6 +43,10 @@ export const router = createBrowserRouter([
         path: "contact",
         element: <Contact />,
       },
+      {
+        path: "checkout", 
+        element: <Checkout/>
+      }
     ],
   },
   {

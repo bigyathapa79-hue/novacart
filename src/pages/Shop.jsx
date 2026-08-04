@@ -1,18 +1,32 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
+import { useSearchParams } from "react-router-dom";
+
 import ShopFilters from "../components/shop/ShopFilters";
 import ShopProducts from "../components/shop/ShopProducts.";
 import { products } from "../data/product";
 import ShopHeader from "../components/shop/ShopHeader";
 
 const Shop = () => {
-  const [category, setCategory] = useState("All");
+  const [searchParams] = useSearchParams();
+
+  const urlCategory = searchParams.get("category");
+
+  const [category, setCategory] = useState(urlCategory || "All");
+
   const [sort, setSort] = useState("default");
+
+  useEffect(() => {
+    setCategory(urlCategory || "All");
+  }, [urlCategory]);
 
   const filteredProducts = useMemo(() => {
     let result =
       category === "All"
         ? [...products]
-        : products.filter((product) => product.category === category);
+        : products.filter(
+            (product) =>
+              product.category?.toLowerCase() === category?.toLowerCase(),
+          );
 
     if (sort === "price-low") {
       result.sort((a, b) => a.price - b.price);
