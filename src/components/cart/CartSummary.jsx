@@ -5,7 +5,7 @@ import { useCart } from "../../context/CartContext";
 const CartSummary = () => {
   const { cartTotal } = useCart();
 
-  const shipping = cartTotal > 100 ? 0 : 10;
+const shipping = cartTotal > 5000 ? 0 : 150;
   const total = cartTotal + shipping;
 
   return (
@@ -16,14 +16,14 @@ const CartSummary = () => {
         <div className="flex justify-between">
           <span className="text-slate-600">Subtotal</span>
 
-          <span className="font-medium">${cartTotal.toFixed(2)}</span>
+          <span className="font-medium">Rs.{cartTotal.toFixed(2)}</span>
         </div>
 
         <div className="flex justify-between">
           <span className="text-slate-600">Shipping</span>
 
           <span className="font-medium">
-            {shipping === 0 ? "Free" : `$${shipping.toFixed(2)}`}
+            {shipping === 0 ? "Free" : `Rs.Rs.{shipping.toFixed(2)}`}
           </span>
         </div>
 
@@ -31,7 +31,7 @@ const CartSummary = () => {
           <span className="font-semibold text-lg">Total</span>
 
           <span className="font-bold text-xl text-blue-600">
-            ${total.toFixed(2)}
+            Rs.{total.toFixed(2)}
           </span>
         </div>
       </div>

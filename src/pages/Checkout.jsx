@@ -103,7 +103,7 @@ const Checkout = () => {
                       <input
                         type="text"
                         placeholder="John"
-                        className={`w-full border rounded-lg px-4 py-3 outline-none focus:ring-2 focus:ring-blue-500 ${
+                        className={`w-full border rounded-lg px-4 py-3 outline-none focus:ring-2 focus:ring-blue-500 Rs.{
                           errors.firstName
                             ? "border-red-500"
                             : "border-slate-300"
@@ -134,7 +134,7 @@ const Checkout = () => {
                       <input
                         type="text"
                         placeholder="Doe"
-                        className={`w-full border rounded-lg px-4 py-3 outline-none focus:ring-2 focus:ring-blue-500 ${
+                        className={`w-full border rounded-lg px-4 py-3 outline-none focus:ring-2 focus:ring-blue-500 Rs.{
                           errors.lastName
                             ? "border-red-500"
                             : "border-slate-300"
@@ -161,13 +161,13 @@ const Checkout = () => {
                       <input
                         type="email"
                         placeholder="john@example.com"
-                        className={`w-full border rounded-lg px-4 py-3 outline-none focus:ring-2 focus:ring-blue-500 ${
+                        className={`w-full border rounded-lg px-4 py-3 outline-none focus:ring-2 focus:ring-blue-500 Rs.{
                           errors.email ? "border-red-500" : "border-slate-300"
                         }`}
                         {...register("email", {
                           required: "Email is required",
                           pattern: {
-                            value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                            value: /^[^\s@]+@[^\s@]+\.[^\s@]+Rs./,
                             message: "Enter a valid email address",
                           },
                         })}
@@ -190,7 +190,7 @@ const Checkout = () => {
                       <input
                         type="tel"
                         placeholder="+1 234 567 890"
-                        className={`w-full border rounded-lg px-4 py-3 outline-none focus:ring-2 focus:ring-blue-500 ${
+                        className={`w-full border rounded-lg px-4 py-3 outline-none focus:ring-2 focus:ring-blue-500 Rs.{
                           errors.phone ? "border-red-500" : "border-slate-300"
                         }`}
                         {...register("phone", {
@@ -227,7 +227,7 @@ const Checkout = () => {
                       <input
                         type="text"
                         placeholder="123 Main Street"
-                        className={`w-full border rounded-lg px-4 py-3 outline-none focus:ring-2 focus:ring-blue-500 ${
+                        className={`w-full border rounded-lg px-4 py-3 outline-none focus:ring-2 focus:ring-blue-500 Rs.{
                           errors.address ? "border-red-500" : "border-slate-300"
                         }`}
                         {...register("address", {
@@ -253,7 +253,7 @@ const Checkout = () => {
                         <input
                           type="text"
                           placeholder="New York"
-                          className={`w-full border rounded-lg px-4 py-3 outline-none focus:ring-2 focus:ring-blue-500 ${
+                          className={`w-full border rounded-lg px-4 py-3 outline-none focus:ring-2 focus:ring-blue-500 Rs.{
                             errors.city ? "border-red-500" : "border-slate-300"
                           }`}
                           {...register("city", {
@@ -278,7 +278,7 @@ const Checkout = () => {
                         <input
                           type="text"
                           placeholder="10001"
-                          className={`w-full border rounded-lg px-4 py-3 outline-none focus:ring-2 focus:ring-blue-500 ${
+                          className={`w-full border rounded-lg px-4 py-3 outline-none focus:ring-2 focus:ring-blue-500 Rs.{
                             errors.postalCode
                               ? "border-red-500"
                               : "border-slate-300"
@@ -304,7 +304,7 @@ const Checkout = () => {
                       </label>
 
                       <select
-                        className={`w-full border rounded-lg px-4 py-3 bg-white outline-none focus:ring-2 focus:ring-blue-500 ${
+                        className={`w-full border rounded-lg px-4 py-3 bg-white outline-none focus:ring-2 focus:ring-blue-500 Rs.{
                           errors.country ? "border-red-500" : "border-slate-300"
                         }`}
                         {...register("country", {
@@ -412,7 +412,7 @@ const Checkout = () => {
                         </div>
 
                         <p className="font-medium">
-                          ${(item.price * item.quantity).toFixed(2)}
+                          Rs.{(item.price * item.quantity).toFixed(2)}
                         </p>
                       </div>
                     ))}
@@ -424,14 +424,14 @@ const Checkout = () => {
                     <div className="flex justify-between">
                       <span className="text-slate-600">Subtotal</span>
 
-                      <span>${cartTotal.toFixed(2)}</span>
+                      <span>Rs.{cartTotal.toFixed(2)}</span>
                     </div>
 
                     <div className="flex justify-between">
                       <span className="text-slate-600">Shipping</span>
 
                       <span>
-                        {shipping === 0 ? "Free" : `$${shipping.toFixed(2)}`}
+                        {shipping === 0 ? "Free" : `Rs.Rs.{shipping.toFixed(2)}`}
                       </span>
                     </div>
 
@@ -439,7 +439,7 @@ const Checkout = () => {
                       <span className="font-bold text-lg">Total</span>
 
                       <span className="font-bold text-xl text-blue-600">
-                        ${total.toFixed(2)}
+                        Rs.{total.toFixed(2)}
                       </span>
                     </div>
                   </div>

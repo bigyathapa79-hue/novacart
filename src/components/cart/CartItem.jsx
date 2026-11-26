@@ -23,7 +23,7 @@ const CartItem = ({ item }) => {
 
         <h3 className="font-semibold text-lg mt-1">{item.name}</h3>
 
-        <p className="text-blue-600 font-bold mt-2">${item.price}</p>
+        <p className="text-blue-600 font-bold mt-2">Rs.{item.price}</p>
       </div>
 
       {/* Quantity */}
@@ -50,7 +50,7 @@ const CartItem = ({ item }) => {
 
       <div className="sm:w-24 text-left sm:text-right">
         <p className="font-semibold">
-          ${(item.price * item.quantity).toFixed(2)}
+          Rs.{(item.price * item.quantity).toFixed(2)}
         </p>
 
         <button
