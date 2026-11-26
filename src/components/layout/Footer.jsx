@@ -101,12 +101,12 @@ const Footer = () => {
             <div className="mt-5 space-y-4">
               <div className="flex gap-3">
                 <FaMapMarkerAlt className="mt-1 text-blue-500" />
-                <span>New York, USA</span>
+                <span>Kathmandu, Nepal</span>
               </div>
 
               <div className="flex gap-3">
                 <FaPhoneAlt className="mt-1 text-blue-500" />
-                <span>+1 234 567 890</span>
+                <span>+977 9769732152</span>
               </div>
 
               <div className="flex gap-3">
